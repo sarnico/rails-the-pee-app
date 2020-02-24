@@ -1,0 +1,58 @@
+class ToiletsController < ApplicationController
+  before_action :set_toilet, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @toilets = Toilet.all
+  end
+
+  def show
+    @toilet = Toilet.new
+    # if @review.save
+    #   redirect_to restaurant_path
+    # else
+    #   render :show
+    # end
+  end
+
+  def new
+    @user = User.find(params[:user_id])
+    @toilet = Toilet.new
+  end
+
+  def create
+    @user = User.find(params[:user_id])
+    @toilet = Toilet.new(toilet_params)
+    @toilet.user = @user
+    @toilet.save
+    # if @restaurant.save
+    #   redirect_to restaurants_path
+    # else
+    #   render :new
+    # end
+  end
+
+  def edit
+
+  end
+
+  def update
+    # @user = User.find(params[:user_id])
+    @toilet.update(toilet_params)
+    # redirect_to restaurant_path
+  end
+
+  def destroy
+    @toilet.destroy
+  end
+
+  private
+
+  def set_toilet
+    @toilet = Toilet.find(params[:id])
+  end
+
+  def toilet_params
+    params.require(:toilet).permit(:name, :address)
+  end
+end
+
