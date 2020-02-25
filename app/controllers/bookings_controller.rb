@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
+skip_before_action :authenticate_user!, only: :home
 
-  # def index
-  #   @bookings = Booking.all
-  # end
+  def index
+    @bookings = Booking.all
+  end
 
   def show
     @booking = Booking.find(params[:id])
@@ -13,13 +14,16 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @user = User.find(params[:user_id])
+    @user = current_user
     @toilet = Toilet.find(params[:toilet_id])
+    @booking = Booking.new(booking_params)
     @booking.user = @user
     @booking.toilet = @toilet
-    @booking.save
-    redirect_to user_path(@user)
+    if @booking.save
+      redirect_to toilet_path(@toilet)
+    else
+      render "toilet"
+    end
   end
 
   def destroy
