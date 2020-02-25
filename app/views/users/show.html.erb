@@ -18,7 +18,8 @@
   <div class="container-toilets">
     <% @user.toilets.each_with_index do |t, index| %>
       <div class="card-toilet">
-        <img src="https://i.pinimg.com/564x/26/c2/a4/26c2a47a1c1769156018bd6bd619aaa4.jpg" />
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path t.image.key%>')">
+        </div>
         <div class="card-toilet-infos">
           <h2><%= "#{t.name}" %></h2>
           <p>Address : <%= "#{t.address}" %></p>
