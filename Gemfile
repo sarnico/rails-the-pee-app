@@ -6,7 +6,6 @@ gem 'devise'
 
 # about pictures
 gem 'cloudinary'
-gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
