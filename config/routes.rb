@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :toilets, only: [:new, :create, :edit, :update, :destroy]
-    resources :bookings, only: [:show, :destroy]
+    resources :bookings, only: [:index, :show, :destroy]
   end
 
   resources :toilets, only: [:index, :show] do
