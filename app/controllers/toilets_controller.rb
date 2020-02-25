@@ -6,12 +6,8 @@ class ToiletsController < ApplicationController
   end
 
   def show
-    @toilet = Toilet.new
-    # if @review.save
-    #   redirect_to restaurant_path
-    # else
-    #   render :show
-    # end
+    @booking = Booking.new
+
   end
 
   def new
