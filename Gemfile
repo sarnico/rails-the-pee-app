@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.6.5'
 
+# about authentification
 gem 'devise'
+
+# about pictures
+gem 'cloudinary'
 
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
