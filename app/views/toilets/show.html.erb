@@ -1,13 +1,21 @@
-<h1>toilet's name</h1>
-<h2>toilet's address</h2>
-<h3>toilet's iamge</h3>
+<h1>toilet's name : <%= @toilet.name %></h1>
+<h2>toilet's address : <%= @toilet.address %></h2>
 
 ICI FORM POUR BOOKER TOILET
 
-<%= simple_form_for [@toilet, @booking] do |f| %>
-  <%= f.error_notification %>
 
+<%= simple_form_for [@toilet, @booking] do |f| %>
   <%= f.input :date %>
-  <%= f.button :submit, class: "btn-primary" %>
- <% end %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
+<h3> liste des bookings</h3>
+
+<% Booking.all.each do |booking| %>
+<ul>
+  <li> <%= booking.date %></li>
+</ul>
+<% end %>
+
+<div id='calendar'></div>
 
