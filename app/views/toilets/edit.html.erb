@@ -1,0 +1,11 @@
+<h1>Edit my toilet</h1>
+
+<p>Edit here the details of the toilet</p>
+
+<%= simple_form_for [@user, @toilet] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.button :submit, class: "btn-primary" %>
+ <% end %>
