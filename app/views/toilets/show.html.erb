@@ -1,0 +1,13 @@
+<h1>toilet's name</h1>
+<h2>toilet's address</h2>
+<h3>toilet's iamge</h3>
+
+ICI FORM POUR BOOKER TOILET
+
+<%= simple_form_for [@toilet, @booking] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :date %>
+  <%= f.button :submit, class: "btn-primary" %>
+ <% end %>
+

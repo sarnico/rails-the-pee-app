@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :toilets, dependent: :destroy
 
-  validates :name, presence: true
+  validates :username, presence: true
   validates :email, presence: true, uniqueness: true
 end
