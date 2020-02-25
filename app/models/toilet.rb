@@ -3,6 +3,8 @@ class Toilet < ApplicationRecord
   has_many :bookings
   has_one_attached :image
 
+  has_one_attached :image
+
   validates :name, presence: true
   validates :address, presence: true
   validates :image, presence: true

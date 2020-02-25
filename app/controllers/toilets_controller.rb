@@ -11,12 +11,12 @@ class ToiletsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @toilet = Toilet.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @toilet = Toilet.new(toilet_params)
     @toilet.user = @user
     @toilet.save
