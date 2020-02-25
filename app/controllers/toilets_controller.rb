@@ -25,20 +25,20 @@ class ToiletsController < ApplicationController
     # else
     #   render :new
     # end
+    redirect_to user_path(current_user)
   end
 
   def edit
-
   end
 
   def update
-    # @user = User.find(params[:user_id])
     @toilet.update(toilet_params)
-    # redirect_to restaurant_path
+    redirect_to user_path(current_user)
   end
 
   def destroy
     @toilet.destroy
+    redirect_to user_path(current_user)
   end
 
   private

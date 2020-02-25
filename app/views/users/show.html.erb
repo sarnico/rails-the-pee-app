@@ -1,0 +1,55 @@
+<h1>My account</h1>
+<div class="container-perso-info">
+  <h2>Personal info :</h2>
+
+  <p>Username : <%="#{@user.username}"%></p>
+  <p>Email : <%="#{@user.email}"%></p>
+</div>
+
+
+<% if @user.toilets != [] %>
+
+  <% if @user.toilets.size == 1 %>
+    <h2>My toilet :</h2>
+  <% else %>
+    <h2>My toilets :</h2>
+  <% end %>
+
+  <div class="container-toilets">
+    <% @user.toilets.each_with_index do |t, index| %>
+      <div class="card-toilet">
+        <img src="https://i.pinimg.com/564x/26/c2/a4/26c2a47a1c1769156018bd6bd619aaa4.jpg" />
+        <div class="card-toilet-infos">
+          <h2><%= "#{t.name}" %></h2>
+          <p>Address : <%= "#{t.address}" %></p>
+          <p><%= link_to "Edit toilet info", edit_toilet_path(t) %> - <%= link_to "Delete toilet", toilet_path(t), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
+
+<% end %>
+
+
+<% if @user.bookings != [] %>
+  <h2>My bookings :</h2>
+  <% @user.bookings.each do |b| %>
+    <p>Date : <%= "#{b.date}" %></p>
+    <p>Toilet : <%= "#{b.toilet.name}" %> ( <%= "#{b.toilet.address}" %> ) </p>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
