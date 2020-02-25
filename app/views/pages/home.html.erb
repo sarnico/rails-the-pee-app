@@ -1,2 +1,68 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<p><i>tout au dessus, la navbar : home, connexion</i></p>
+
+<h1>Welcome to the pee app !</h1>
+<p>Nr 1 or nr 2 ? Find the best spot around you</p>
+
+<div class="main-container">
+
+  <div class="home-container-toilets">
+    <% Toilet.all.each do |t| %>
+      <div class="home-card-toilet">
+        <img src="https://i.pinimg.com/564x/26/c2/a4/26c2a47a1c1769156018bd6bd619aaa4.jpg" />
+        <div class="home-card-toilet-infos">
+          <h2><%= "#{t.name}" %></h2>
+          <p>Address : <%= "#{t.address}" %></p>
+          <p><%= link_to "View details", toilet_path(t) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="map">
+
+    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Search </button>
+      </div>
+    <% end %>
+
+    <img id="example-map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiY29saW5lYiIsImEiOiJjazZjN3VzazEwcDc2M25tdjB1N3RnbjJ2In0.P9qhIgAg-HT8SV4enzAFaA'>
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div id="map"></div>
+
+<script>
+  mapboxgl.accessToken =
+    'pk.eyJ1IjoiY29saW5lYiIsImEiOiJjazcyMnpncHowY2hsM2Zta2FndnkyZnljIn0.-V6r6g-WQcvNwyD3aDxEig';
+  const map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-96, 37.8], // starting position
+    zoom: 3 // starting zoom
+  });
+
+  // Add geolocate control to the map.
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    })
+  );
+</script>

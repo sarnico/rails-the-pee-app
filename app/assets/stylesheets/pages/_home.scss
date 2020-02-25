@@ -1,1 +1,83 @@
 // Specific CSS for your home-page
+.main-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-card-toilet {
+  overflow: hidden;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.home-card-toilet img {
+  height: 100%;
+  width: 100px;
+  object-fit: cover;
+}
+
+.home-card-toilet h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.home-card-toilet p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0px;
+  margin-top: 8px;
+}
+
+.home-card-toilet .home-card-toilet-infos {
+  padding: 16px;
+}
+
+.home-container-toilets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+
+
