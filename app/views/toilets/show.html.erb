@@ -11,13 +11,17 @@ ICI FORM POUR BOOKER TOILET
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 
-<h3> liste des bookings</h3>
+<!-- <h3> liste des bookings</h3>
 
 <% Booking.all.each do |booking| %>
 <ul>
   <li> <%= booking.date %></li>
 </ul>
-<% end %>
+<% end %> -->
 
-<div id='calendar'></div>
+
+<% toilet_calendar = @toilet.bookings.map do |booking| %>
+  <% { start: booking.date, end: booking.date + 15.minutes } %>
+<% end %>
+<div id='calendar' data-toilet-id="<%= @toilet.id.to_s %>" data-booking="<%= (toilet_calendar).to_json %>"></div>
 
