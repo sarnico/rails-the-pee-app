@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :toilets, dependent: :destroy
 
+  has_one_attached :avatar
+
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true
 end

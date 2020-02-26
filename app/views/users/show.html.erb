@@ -4,22 +4,22 @@
       <div class="user-info-container-flex-start">
         <div class="avatar-user-account-container">
           <div class="avatar-user-account">
-            <img src="https://steamuserimages-a.akamaihd.net/ugc/918040807623446845/657A1F646213A86D0AC6D5670408B769441D17AC/" alt="avatar image">
+            <%= cl_image_tag @user.avatar.key, height: 500, width: 500, crop: :fill %>
           </div>
         </div>
         <div class="info-user-account-container">
           <div class="account-title">
             <h2>Account</h2>
-            <%= cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad") %>
+            <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad"), edit_user_registration_path %>
           </div>
         <p><strong>Username :</strong> <%="#{@user.username}"%></p>
         <p><strong>Email :</strong> <%="#{@user.email}"%></p>
         </div>
       </div>
     </div>
-    <div class="toilet-info-container">
+    <div>
       <% if @user.toilets != [] %>
-
+        <div  class="toilet-info-container" >
         <% if @user.toilets.size == 1 %>
           <div class="header-cards-toilets">
             <h2>My toilet</h2>
@@ -50,8 +50,11 @@
             </div>
           <% end %>
         </div>
-
-
+        </div>
+      <% else %>
+        <div class="btn-add-first-toilet">
+          <%= link_to "Add your first toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
+        </div>
       <% end %>
 
 
