@@ -11,17 +11,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+        <% if current_user.bookings != [] %>
+          <li class="nav-item">
+            <%= link_to "My bookings", user_path(current_user), class: "nav-link" %>
+          </li>
+        <% end %>
+        <% if current_user.toilets != [] %>
+          <li class="nav-item">
+            <%= link_to "My toilets", user_path(current_user), class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item active">
-          <%= link_to "Host a toilet", new_user_toilet_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Book a toilet", new_toilet_booking_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My bookings", user_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My toilets", toilets_path(current_user), class: "nav-link" %>
+          <%= link_to "Create a toilet", new_user_toilet_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
