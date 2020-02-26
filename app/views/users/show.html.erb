@@ -23,12 +23,12 @@
         <% if @user.toilets.size == 1 %>
           <div class="header-cards-toilets">
             <h2>My toilet</h2>
-            <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
+            <%= link_to "Create a toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
           </div>
         <% else %>
           <div class="header-cards-toilets">
             <h2>My toilets</h2>
-            <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
+            <%= link_to "Create a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
           </div>
         <% end %>
 
