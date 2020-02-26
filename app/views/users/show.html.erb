@@ -1,48 +1,67 @@
-<h1>My account</h1>
-<div class="container-perso-info">
-  <h2>Personal info :</h2>
-
-  <p>Username : <%="#{@user.username}"%></p>
-  <p>Email : <%="#{@user.email}"%></p>
-</div>
-
-
-<% if @user.toilets != [] %>
-
-  <% if @user.toilets.size == 1 %>
-    <h2>My toilet :</h2>
-  <% else %>
-    <h2>My toilets :</h2>
-  <% end %>
-
-  <div class="container-toilets">
-    <% @user.toilets.each_with_index do |t, index| %>
-      <div class="card-toilet">
-        <% if t.image.attached? %>
-          <div
-            class="card-category"
-            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path t.image.key%>')"
-          >
-        <% end %>
+<div class="body">
+  <div class="container">
+    <div class="user-info-container">
+      <div class="user-info-container-flex-start">
+        <div class="avatar-user-account-container">
+          <div class="avatar-user-account">
+            <img src="https://steamuserimages-a.akamaihd.net/ugc/918040807623446845/657A1F646213A86D0AC6D5670408B769441D17AC/" alt="avatar image">
+          </div>
         </div>
-        <div class="card-toilet-infos">
-          <h2><%= "#{t.name}" %></h2>
-          <p>Address : <%= "#{t.address}" %></p>
-          <p><%= link_to "Edit toilet info", edit_toilet_path(t) %> - <%= link_to "Delete toilet", toilet_path(t), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <div class="info-user-account-container">
+          <div class="account-title">
+            <h2>Account</h2>
+            <%= cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad") %>
+          </div>
+        <p>Username : <%="#{@user.username}"%></p>
+        <p>Email : <%="#{@user.email}"%></p>
         </div>
       </div>
-    <% end %>
+    </div>
+    <div class="toilet-info-container">
+      <% if @user.toilets != [] %>
+
+        <% if @user.toilets.size == 1 %>
+          <div class="header-cards-toilets">
+            <h2>My toilet</h2>
+            <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
+          </div>
+        <% else %>
+          <div class="header-cards-toilets">
+            <h2>My toilets</h2>
+            <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
+          </div>
+        <% end %>
+
+        <div class="container-toilets">
+          <% @user.toilets.each_with_index do |t, index| %>
+            <div class="card-toilet">
+              <% if t.image.attached? %>
+                <div
+                  class="card-category"
+                  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path t.image.key%>')"
+                >
+              <% end %>
+              </div>
+              <div class="card-toilet-infos">
+                <h2><%= "#{t.name}" %></h2>
+                <p>Address : <%= "#{t.address}" %></p>
+                <p><%= link_to "Edit toilet info", edit_toilet_path(t) %> - <%= link_to "Delete toilet", toilet_path(t), method: :delete, data: { confirm: "Are you sure?" } %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+
+      <% end %>
+
+
+      <% if @user.bookings != [] %>
+        <h2>My bookings :</h2>
+        <% @user.bookings.each do |b| %>
+          <p>Date : <%= "#{b.date}" %></p>
+          <p>Toilet : <%= "#{b.toilet.name}" %> ( <%= "#{b.toilet.address}" %> ) </p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-
-  <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
-
-<% end %>
-
-
-<% if @user.bookings != [] %>
-  <h2>My bookings :</h2>
-  <% @user.bookings.each do |b| %>
-    <p>Date : <%= "#{b.date}" %></p>
-    <p>Toilet : <%= "#{b.toilet.name}" %> ( <%= "#{b.toilet.address}" %> ) </p>
-  <% end %>
-<% end %>
+</div>
