@@ -1,5 +1,5 @@
 class ToiletsController < ApplicationController
-  before_action :set_toilet, only: [:show, :edit, :update, :destroy]
+  before_action :set_toilet, only: [:show, :edit, :update, :destroy, :events]
 
   def index
     @toilets = Toilet.all
@@ -7,7 +7,6 @@ class ToiletsController < ApplicationController
 
   def show
     @booking = Booking.new
-
   end
 
   def new
@@ -29,6 +28,7 @@ class ToiletsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -39,6 +39,17 @@ class ToiletsController < ApplicationController
   def destroy
     @toilet.destroy
     redirect_to user_path(current_user)
+  end
+
+  def events
+    # toilet_events = @toilet.bookings.map do |booking|
+    # end
+    toilet_events = {
+      title: "YOUPY",
+      start: '2020-02-26T12:00:00-00:00',
+      end: '2020-02-26T14:00:00-00:00'
+    }
+    render json: toilet_events.to_json
   end
 
   private

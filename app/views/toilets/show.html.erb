@@ -16,6 +16,8 @@ ICI FORM POUR BOOKER TOILET
   <li> <%= booking.date %></li>
 </ul>
 <% end %>
-
-<div id='calendar'></div>
+<% toilet_calendar = @toilet.bookings.map do |booking| %>
+  <% { start: booking.date, end: booking.date + 120.minutes } %>
+<% end %>
+<div id='calendar' data-toilet-id="<%= @toilet.id.to_s %>" data-booking="<%= (toilet_calendar).to_json %>"></div>
 
