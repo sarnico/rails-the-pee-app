@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 const calendar = () => {
 
   document.addEventListener('DOMContentLoaded', function() {
+
     var calendarEl = document.getElementById('calendar');
     const calendarData = JSON.parse(calendarEl.dataset.booking)
     console.log(calendarData)
@@ -13,8 +14,11 @@ const calendar = () => {
     let calendar = new Calendar(calendarEl, {
       timeZone: 'local',
       plugins: [ interactionPlugin, resourceTimeGridPlugin ],
-      defaultView: 'timeGridWeek',
+      defaultView: 'timeGridDay',
       selectable: true,
+      slotDuration: '00:15',
+      minTime: '08:00',
+      maxTime: '17:00',
       events: calendarData
     })
 

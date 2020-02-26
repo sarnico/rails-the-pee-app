@@ -41,16 +41,16 @@ class ToiletsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def events
-    # toilet_events = @toilet.bookings.map do |booking|
-    # end
-    toilet_events = {
-      title: "YOUPY",
-      start: '2020-02-26T12:00:00-00:00',
-      end: '2020-02-26T14:00:00-00:00'
-    }
-    render json: toilet_events.to_json
-  end
+  # def events
+  #   # toilet_events = @toilet.bookings.map do |booking|
+  #   # end
+  #   toilet_events = {
+  #     title: "YOUPY",
+  #     start: '2020-02-26T12:00:00-00:00',
+  #     end: '2020-02-26T14:00:00-00:00'
+  #   }
+  #   render json: toilet_events.to_json
+  # end
 
   private
 
