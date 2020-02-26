@@ -1,0 +1,14 @@
+<div class="popup-container">
+
+  <div class="image">
+      <div
+      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path toilet.image.key%>')"
+      >
+  </div>
+
+  <div class="infos">
+    <h5><%= link_to "#{toilet.name}", toilet_path(toilet) %></h5>
+    <p><%= toilet.address %></p>
+  </div>
+
+</div>
