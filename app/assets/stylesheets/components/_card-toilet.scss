@@ -36,13 +36,11 @@
 
 .card-category {
   height: 100%;
-  width: 35%;
-  background-size: 100% 100%;
+  min-width: 35%;
+  background-size: cover;
   background-repeat: no-repeat;
-  // height: 100%;
-  // width: 120px;
-  // object-fit: cover;
-  // background-position: center;
+  object-fit: cover;
+  background-position: center;
 }
 
 
