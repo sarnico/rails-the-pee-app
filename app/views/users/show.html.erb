@@ -10,16 +10,16 @@
         <div class="info-user-account-container">
           <div class="account-title">
             <h2>Account</h2>
-            <%= cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad") %>
+            <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad"), edit_user_registration_path %>
           </div>
         <p>Username : <%="#{@user.username}"%></p>
         <p>Email : <%="#{@user.email}"%></p>
         </div>
       </div>
     </div>
-    <div class="toilet-info-container">
+    <div>
       <% if @user.toilets != [] %>
-
+        <div  class="toilet-info-container" >
         <% if @user.toilets.size == 1 %>
           <div class="header-cards-toilets">
             <h2>My toilet</h2>
@@ -50,8 +50,11 @@
             </div>
           <% end %>
         </div>
-
-
+        </div>
+      <% else %>
+        <div class="btn-add-first-toilet">
+          <%= link_to "Add your first toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
+        </div>
       <% end %>
 
 
