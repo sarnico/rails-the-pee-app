@@ -1,29 +1,33 @@
 <div class="body">
   <div class="container">
     <div class="user-info-container">
-      <div class="avatar-user-account-container">
-        <div class="avatar-user-account">
-          <img src="https://steamuserimages-a.akamaihd.net/ugc/918040807623446845/657A1F646213A86D0AC6D5670408B769441D17AC/" alt="avatar image">
+      <div class="user-info-container-flex-start">
+        <div class="avatar-user-account-container">
+          <div class="avatar-user-account">
+            <img src="https://steamuserimages-a.akamaihd.net/ugc/918040807623446845/657A1F646213A86D0AC6D5670408B769441D17AC/" alt="avatar image">
+          </div>
         </div>
-      </div>
-      <div class="info-user-account-container">
-      <h2>Account</h2>
-
-      <p>Username : <%="#{@user.username}"%></p>
-      <p>Email : <%="#{@user.email}"%></p>
+        <div class="info-user-account-container">
+          <div class="account-title">
+            <h2>Account</h2>
+            <%= cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad") %>
+          </div>
+        <p>Username : <%="#{@user.username}"%></p>
+        <p>Email : <%="#{@user.email}"%></p>
+        </div>
       </div>
     </div>
     <div class="toilet-info-container">
       <% if @user.toilets != [] %>
 
         <% if @user.toilets.size == 1 %>
-          <div>
-            <h2>My toilet :</h2>
+          <div class="header-cards-toilets">
+            <h2>My toilet</h2>
             <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
           </div>
         <% else %>
-          <div>
-            <h2>My toilets :</h2>
+          <div class="header-cards-toilets">
+            <h2>My toilets</h2>
             <%= link_to "Add a new toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
           </div>
         <% end %>
