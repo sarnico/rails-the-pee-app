@@ -20,7 +20,6 @@ const calendar = () => {
     const calendarData = JSON.parse(calendarEl.dataset.booking)
 
     let calendar = new Calendar(calendarEl, {
-      height: 650,
       plugins: [ interactionPlugin, resourceTimeGridPlugin ],
       defaultView: 'timeGridDay',
       allDaySlot: false,
