@@ -6,7 +6,7 @@
 <div class="main-container">
 
   <div class="all-toilets">
-    <% @toilets.each do |t| %>
+    <% Toilet.near('Becentral', 10).each do |t| %>
       <%= link_to toilet_path(t) do %>
         <div class='home-card-toilet'>
 
@@ -18,8 +18,14 @@
 
           <div class='home-card-toilet-infos'>
             <h2><%= t.name %></h2>
-            <p>Hosted by : <%= t.user.username %></p>
             <p>Address : <%= t.address %></p>
+            <p>Hosted by : <%= t.user.username %></p>
+          </div>
+
+          <div class="host">
+            <% if current_user.avatar.attached? %>
+            <%= cl_image_tag current_user.avatar.key, height: 40, width: 40, crop: :fill, class: "host-avatar avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
           </div>
 
         </div>
