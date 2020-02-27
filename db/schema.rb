@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_103219) do
     t.string "name"
     t.text "address"
     t.bigint "user_id"
+    t.datetime "min_booking_time"
+    t.datetime "max_booking_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image"
