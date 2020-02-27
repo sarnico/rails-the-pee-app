@@ -5,12 +5,14 @@
       <%= simple_form_for [@user, @toilet] do |f| %>
         <%= f.error_notification %>
 
-        <%= f.input :name %>
-        <%= f.input :address %>
-        <%= f.input :image, as: :file %>
-        <%= f.button :submit, class: "btn-primary" %>
-      <% end %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :min_booking_time %>
+  <%= f.input :max_booking_time %>
 
-    </div>
- </div>
+  <%= f.input :image, as: :file %>
+  <%= f.button :submit, class: "btn-primary" %>
+ <% end %>
+</div>
+</div>
 
