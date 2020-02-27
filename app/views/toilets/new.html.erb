@@ -8,8 +8,8 @@
           <%= f.error_notification %>
 
           <%= f.input :name, label: 'Give a name to your toilet', placeholder: 'The name' %>
-          <%= f.input :min_booking_time %>
-          <%= f.input :max_booking_time %>
+          <%= f.input :min_booking_time, label: 'Minimum time of possible booking (time only) :' %>
+          <%= f.input :max_booking_time, label: 'Maximum time of possible booking (time only) :' %>
           <%= f.input :address, label: 'Address', placeholder: 'Street, number, postcode and city' %>
           <%= f.input :image, label: 'Add a picture of the toilet', as: :file %>
           <%= f.button :submit, 'Create', class: "btn-primary" %>
