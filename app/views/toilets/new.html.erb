@@ -1,16 +1,18 @@
-  <div class="container">
-    <div class="user-info-container">
+<div class="body">
+  <div class="container form-container">
+
       <h1>Create a new toilet</h1>
 
-      <%= simple_form_for [@user, @toilet] do |f| %>
-        <%= f.error_notification %>
+      <div class="form">
+        <%= simple_form_for [@user, @toilet] do |f| %>
+          <%= f.error_notification %>
 
-        <%= f.input :name %>
-        <%= f.input :address %>
-        <%= f.input :image, as: :file %>
-        <%= f.button :submit, class: "btn-primary" %>
-      <% end %>
+          <%= f.input :name, label: 'Give a name to your toilet', placeholder: 'The name' %>
+          <%= f.input :address, label: 'Address', placeholder: 'Street, number, postcode and city' %>
+          <%= f.input :image, label: 'Add a picture of the toilet', as: :file %>
+          <%= f.button :submit, 'Create', class: "btn-primary" %>
+        <% end %>
+      </div>
 
-    </div>
- </div>
-
+  </div>
+</div>
