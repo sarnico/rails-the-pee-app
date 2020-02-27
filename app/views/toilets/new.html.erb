@@ -1,4 +1,4 @@
-<h1>Ici pour créer ta toilette</h1>
+<h1>Create a new toilet</h1>
 
 <%= simple_form_for [@user, @toilet] do |f| %>
   <%= f.error_notification %>
@@ -8,9 +8,4 @@
   <%= f.input :image, as: :file %>
   <%= f.button :submit, class: "btn-primary" %>
  <% end %>
-
-
-<i class="fas fa-toilet"></i>
-
-<i class="fas fa-restroom"></i>
 
