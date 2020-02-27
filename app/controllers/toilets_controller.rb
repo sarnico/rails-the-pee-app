@@ -8,6 +8,23 @@ class ToiletsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @toilet_settings = {
+      min_booking_time: @toilet.min_booking_time.strftime("%H:%M"),
+      max_booking_time: @toilet.max_booking_time.strftime("%H:%M"),
+    }
+
+
+    @available_periods_today = @toilet.available_booking_periods
+    @toilet.bookings.where(date: Date.today.to_datetime).each{|booking|
+      @available_periods_today.reject!{|apt|
+        apt == booking.date
+      }
+    }
+
+    @toilet_calendar = @toilet.bookings.map { |booking|
+      { start: booking.date, end: booking.date + 15.minutes}
+    }
+
   end
 
   def new
@@ -20,12 +37,11 @@ class ToiletsController < ApplicationController
     @toilet = Toilet.new(toilet_params)
     @toilet.user = @user
     @toilet.save
-    # if @restaurant.save
-    #   redirect_to restaurants_path
-    # else
-    #   render :new
-    # end
-    redirect_to user_path(current_user)
+    if @toilet.save
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -42,17 +58,6 @@ class ToiletsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  # def events
-  #   # toilet_events = @toilet.bookings.map do |booking|
-  #   # end
-  #   toilet_events = {
-  #     title: "YOUPY",
-  #     start: '2020-02-26T12:00:00-00:00',
-  #     end: '2020-02-26T14:00:00-00:00'
-  #   }
-  #   render json: toilet_events.to_json
-  # end
-
   private
 
   def set_toilet
@@ -60,7 +65,7 @@ class ToiletsController < ApplicationController
   end
 
   def toilet_params
-    params.require(:toilet).permit(:name, :address, :image)
+    params.require(:toilet).permit(:name, :address, :image, :min_booking_time, :max_booking_time)
   end
 end
 
