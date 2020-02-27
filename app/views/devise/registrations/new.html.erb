@@ -3,34 +3,44 @@
 
     <h2>Sign up</h2>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
+    <div class="form">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :username,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "username" }%>
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.file.field :avatar, as: :file %>
+      <div class="form-inputs new-user-form">
+        <%= f.input :username,
+                    label: 'Enter a username',
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "username" }%>
+        <%= f.input :email,
+                    label: 'Enter your email address',
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    label: 'Your password',
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    label: 'Confirm your password',
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :avatar, label: "Upload a profile picture",as: :file %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Create your account", class: "btn-primary" %>
+      </div>
+      <% end %>
+
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-    <% end %>
 
-    <%= render "devise/shared/links" %>
+    <div class="delete-button">
+      <%= link_to "Or log in here", new_user_session_path %>
+    </div>
 
   </div>
 </div>
