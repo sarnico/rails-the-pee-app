@@ -1,0 +1,44 @@
+.simple_form.edit_user {
+  input[type="file"]{
+    display: none;
+  }
+  label[for="user_avatar"]{
+    background-color: white;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px;
+    box-shadow: 0px 0px 15px lightgrey;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+      box-shadow: 0px 0px 0px lightgrey;
+    }
+  }
+}
+
+.delete-button {
+  background-color: white;
+  border-style: solid;
+  border-color: lightgrey;
+  border-width: 1px;
+  box-shadow: 0px 0px 15px lightgrey;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 180px;
+}
+
+.delete-button a {
+  color: black;
+}
+
+.delete-button a:hover {
+  text-decoration: none;
+}
+
+.delete-button:hover {
+  box-shadow: 0px 0px 0px lightgrey;
+}
+
