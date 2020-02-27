@@ -9,15 +9,15 @@ class ToiletsController < ApplicationController
   def show
     @booking = Booking.new
     @toilet_settings = {
-      min_booking_time: @toilet.min_booking_time,
-      max_booking_time: @toilet.max_booking_time,
+      min_booking_time: @toilet.min_booking_time.strftime("%H:%M"),
+      max_booking_time: @toilet.max_booking_time.strftime("%H:%M"),
     }
 
 
     @available_periods_today = @toilet.available_booking_periods
     @toilet.bookings.where(date: Date.today.to_datetime).each{|booking|
       @available_periods_today.reject!{|apt|
-        DateTime.parse(apt) == booking.date
+        apt == booking.date
       }
     }
 
