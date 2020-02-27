@@ -1,24 +1,21 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
   background: white;
+  position: sticky;
+  top: 0;
+  height: 9vh;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 100px;
+.navbar .navbar-brand img {
+  width: 100%;
 }
 
-// .PeeAppNavBarLogo {
-//   height: 40px;
-//   width: 40px;
-// }
-
 .navbar-brand {
-  font-size: 40px;
+  font-size: 35px;
   margin: 0px;
   padding: 0px;
 }
-
