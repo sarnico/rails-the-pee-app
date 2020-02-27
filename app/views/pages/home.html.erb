@@ -7,20 +7,22 @@
 
   <div class="all-toilets">
     <% @toilets.each do |t| %>
-      <div class="home-card-toilet">
-        <% if t.image.attached? %>
-          <div
-            class="home-card-category"
-            style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path t.image.key%>')"
-          >
-        <% end %>
+      <%= link_to toilet_path(t) do %>
+        <div class='home-card-toilet'>
+
+          <% if t.image.attached? %>
+          <div class='home-card-category'
+            style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%= cl_image_path t.image.key %>)'>
+          </div>
+          <% end %>
+
+          <div class='home-card-toilet-infos'>
+            <h2><%= t.name %></h2>
+            <p>Address : <%= t.address %></p>
+          </div>
+
         </div>
-        <div class="home-card-toilet-infos">
-          <h2><%= "#{t.name}" %></h2>
-          <p>Address : <%= "#{t.address}" %></p>
-          <p><%= link_to "View details", toilet_path(t) %></p>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 
