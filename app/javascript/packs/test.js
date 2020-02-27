@@ -16,12 +16,10 @@ const calendar = () => {
       .dataset
       .toiletSettings
     );
-    console.log(toiletSettings)
+
     const calendarData = JSON.parse(calendarEl.dataset.booking)
-    console.log(calendarData)
 
     let calendar = new Calendar(calendarEl, {
-      timeZone: 'local',
       plugins: [ interactionPlugin, resourceTimeGridPlugin ],
       defaultView: 'timeGridDay',
       selectable: true,
