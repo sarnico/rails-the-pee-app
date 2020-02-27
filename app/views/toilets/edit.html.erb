@@ -1,12 +1,18 @@
-<h1>Edit my toilet</h1>
+<div class="body">
+  <div class="container form-container">
 
-<p>Edit here the details of the toilet</p>
+    <h1>Update your toilet</h1>
 
-<%= simple_form_for [@user, @toilet] do |f| %>
-  <%= f.error_notification %>
-
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :image, as: :file %>
-  <%= f.button :submit, class: "btn-primary" %>
- <% end %>
+    <div class="form">
+      <%= simple_form_for [@user, @toilet] do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :name, label: 'Change the name of your toilet' %>
+        <%= f.input :address, label: 'Change the address' %>
+        <%= f.input :min_booking_time, label: 'Change the minimum time of possible booking (time only) :' %>
+        <%= f.input :max_booking_time, label: 'Change the maximum time of possible booking (time only) :' %>
+        <%= f.input :image, label: 'Change the picture of your toilet', as: :file %>
+        <%= f.button :submit, 'Update', class: "btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
