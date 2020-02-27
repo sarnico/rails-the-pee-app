@@ -22,8 +22,10 @@ const calendar = () => {
     let calendar = new Calendar(calendarEl, {
       plugins: [ interactionPlugin, resourceTimeGridPlugin ],
       defaultView: 'timeGridDay',
+      allDaySlot: false,
       selectable: true,
       slotDuration: '00:15',
+      slotLabelInterval: '00:15',
       minTime: toiletSettings.min_booking_time,
       maxTime: toiletSettings.max_booking_time,
       events: calendarData

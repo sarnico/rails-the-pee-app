@@ -1,26 +1,33 @@
-<h1>toilet's name : <%= @toilet.name %></h1>
-<h2>toilet's address : <%= @toilet.address %></h2>
+<div class="body">
+  <div class="container">
+    <div>
+      <h1 class="calendarBookingInfo"><%= @toilet.name %></h1>
+      <h2 class="calendarBookingInfo"><%= @toilet.address %></h2>
+      <div class="calendarBookingInfo">
+        <%= simple_form_for [@toilet, @booking] do |f| %>
+          <%= f.input :date, collection:@available_periods_today, prompt: :translate %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="calendarBookingInfo">
+        <%= cl_image_tag @toilet.image.key %>
+      </div>
+    </div>
 
+    <div class="whereCalendarIs">
+      <div
+        id="booking-settings"
+        data-toilet-settings="<%= @toilet_settings.to_json %>"
+        style="display:none;"
+      >
+      </div>
 
-
-ICI FORM POUR BOOKER TOILET
-
-<%= simple_form_for [@toilet, @booking] do |f| %>
-  <%= f.input :date, collection:@available_periods_today, prompt: :translate %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
-
-<div
-  id="booking-settings"
-  data-toilet-settings="<%= @toilet_settings.to_json %>"
-  style="display:none;"
->
+      <div
+        id='calendar'
+        data-toilet-id="<%= @toilet.id.to_s %>"
+        data-booking="<%= (@toilet_calendar).to_json %>"
+      >
+      </div>
+    </div>
+   </div>
 </div>
-
-<div
-  id='calendar'
-  data-toilet-id="<%= @toilet.id.to_s %>"
-  data-booking="<%= (@toilet_calendar).to_json %>"
->
-</div>
-
