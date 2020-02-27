@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-skip_before_action :authenticate_user!, only: :home
 
   def index
     @bookings = Booking.all
