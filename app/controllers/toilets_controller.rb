@@ -37,12 +37,11 @@ class ToiletsController < ApplicationController
     @toilet = Toilet.new(toilet_params)
     @toilet.user = @user
     @toilet.save
-    # if @restaurant.save
-    #   redirect_to restaurants_path
-    # else
-    #   render :new
-    # end
-    redirect_to user_path(current_user)
+    if @toilet.save
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   def edit
