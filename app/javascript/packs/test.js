@@ -8,17 +8,24 @@ const calendar = () => {
   document.addEventListener('DOMContentLoaded', function() {
 
     var calendarEl = document.getElementById('calendar');
+    if (!calendarEl){
+      return
+    }
+    const toiletSettings = JSON.parse(document
+      .getElementById("booking-settings")
+      .dataset
+      .toiletSettings
+    );
+
     const calendarData = JSON.parse(calendarEl.dataset.booking)
-    console.log(calendarData)
 
     let calendar = new Calendar(calendarEl, {
-      timeZone: 'local',
       plugins: [ interactionPlugin, resourceTimeGridPlugin ],
       defaultView: 'timeGridDay',
       selectable: true,
       slotDuration: '00:15',
-      minTime: '08:00',
-      maxTime: '17:00',
+      minTime: toiletSettings.min_booking_time,
+      maxTime: toiletSettings.max_booking_time,
       events: calendarData
     })
 
