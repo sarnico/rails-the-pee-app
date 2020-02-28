@@ -6,7 +6,7 @@ const initMapbox = () => {
 
   if (mapElement) { // only build a map if there's a div#map to inject into
 
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey
 
 
     // Create the map
@@ -57,12 +57,9 @@ const initMapbox = () => {
     });
 
 
-    // Add the search  bar
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, placeholder: 'Search',
                                       mapboxgl: mapboxgl }));
-
   }
 };
-
 
 export { initMapbox };
