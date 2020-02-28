@@ -23,6 +23,7 @@ const calendar = () => {
       plugins: [ interactionPlugin, resourceTimeGridPlugin ],
       defaultView: 'timeGridDay',
       allDaySlot: false,
+      timeZone: "UTC",
       selectable: true,
       slotDuration: '00:15',
       slotLabelInterval: '00:15',
