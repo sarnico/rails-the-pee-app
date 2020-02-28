@@ -23,7 +23,7 @@
           </div>
 
           <div class="host">
-            <% if current_user.avatar.attached? %>
+            <% if t.user.avatar.attached? %>
             <%= cl_image_tag t.user.avatar.key, height: 40, width: 40, crop: :fill, class: "host-avatar avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
           </div>
