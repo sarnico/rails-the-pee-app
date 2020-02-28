@@ -15,27 +15,27 @@
             <h2>Account</h2>
             <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad"), edit_user_registration_path %>
           </div>
-        <p><strong>Username :</strong> <%="#{@user.username}"%></p>
-        <p><strong>Email :</strong> <%="#{@user.email}"%></p>
+        <p><strong>Username :</strong> <%="#{current_user.username}"%></p>
+        <p><strong>Email :</strong> <%="#{current_user.email}"%></p>
         </div>
       </div>
     </div>
 
     <div class="borders">
       <% if @user.toilets != [] %>
-        <div  class="toilet-info-container" >
-        <% if @user.toilets.size == 1 %>
-          <div class="header-cards-toilets">
-            <h2>My toilet</h2>
-            <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582816115/ic_add_box_48px_lwqilz.svg", :width => 38, :crop => "pad"), new_user_toilet_path(@user) %>
-          </div>
-        <% else %>
-          <div class="header-cards-toilets">
-            <h2>My toilets</h2>
-            <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582816115/ic_add_box_48px_lwqilz.svg", :width => 38, :crop => "pad"), new_user_toilet_path(@user) %>
-          </div>
-        <% end %>
-
+        <div  class="toilet-info-container">
+          <% if @user.toilets.size == 1 %>
+            <div class="header-cards-toilets">
+              <h2>My toilet</h2>
+              <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582816115/ic_add_box_48px_lwqilz.svg", :width => 38, :crop => "pad"), new_user_toilet_path(@user) %>
+            </div>
+          <% else %>
+            <div class="header-cards-toilets">
+              <h2>My toilets</h2>
+              <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582816115/ic_add_box_48px_lwqilz.svg", :width => 38, :crop => "pad"), new_user_toilet_path(@user) %>
+            </div>
+          <% end %>
+        </div>
         <div class="container-toilets">
           <% @user.toilets.each_with_index do |t, index| %>
             <div class="card-toilet">
@@ -44,8 +44,8 @@
                   class="card-category"
                   style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path t.image.key%>')"
                 >
+                </div>
               <% end %>
-              </div>
               <div class="card-toilet-infos">
                 <h2><%= "#{t.name}" %></h2>
                 <p>Address : <%= "#{t.address}" %></p>
@@ -54,7 +54,6 @@
             </div>
           <% end %>
         </div>
-        </div>
       <% else %>
         <div class="btn-add-first-toilet">
           <%= link_to "Add your first toilet", new_user_toilet_path(@user), class: "btn btn-flat" %>
@@ -62,25 +61,29 @@
       <% end %>
     </div>
     <div>
-      <div class="booking-info-container">
-        <% if @user.bookings != [] %>
-          <div class="header-booking-toilet">
-            <h2>My bookings :</h2>
-            <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582816115/ic_add_box_48px_lwqilz.svg", :width => 38, :crop => "pad"), root_path %>
-          </div>
-          <div class="booking-cards-container">
-            <% @user.bookings.each do |b| %>
-              <div class="booking-cards">
-                  <p class="p"><strong>Toilet</strong>  : <%= "#{b.toilet.name}" %></p>
-                  <p class="p"><strong>Date</strong>  : <%= "#{b.date}" %></p>
-                  <p class="p"><strong>Address</strong> : <%= "#{b.toilet.address}" %></p>
-                  <div class="flex-end-card">
-                    <p class="edit-remove-booking-card"><%= link_to "Edit booking", edit_toilet_path(b) %>  -  <%= link_to "Delete booking", toilet_path(b), method: :delete, data: { confirm: "Are you sure?" } %></p>
-                  </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+      <% if @user.bookings != [] %>
+        <div class="booking-info-container">
+        <div class="header-booking-toilet">
+          <h2>My bookings :</h2>
+          <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582816115/ic_add_box_48px_lwqilz.svg", :width => 38, :crop => "pad"), root_path %>
+        </div>
+        <div class="booking-cards-container">
+          <% @user.bookings.each do |b| %>
+            <div class="booking-cards">
+                <p class="p"><strong>Toilet</strong>  : <%= "#{b.toilet.name}" %></p>
+                <p class="p"><strong>Date</strong>  : <%= "#{b.date}" %></p>
+                <p class="p"><strong>Address</strong> : <%= "#{b.toilet.address}" %></p>
+                <div class="flex-end-card">
+                  <p class="edit-remove-booking-card"><%= link_to "Edit booking", edit_toilet_path(b) %>  -  <%= link_to "Delete booking", toilet_path(b), method: :delete, data: { confirm: "Are you sure?" } %></p>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="btn-add-first-booking">
+          <%= link_to "Make your first booking", root_path, class: "btn btn-flat" %>
+        </div>
+      <% end %>
       </div>
     </div>
 
