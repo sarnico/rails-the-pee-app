@@ -16,10 +16,10 @@ class Toilet < ApplicationRecord
 
   def available_booking_periods
     periods=[]
-    setting_time = min_booking_time
+    setting_time = min_booking_time.to_time
     while setting_time < max_booking_time do
-      setting_time += PERIOD_TIME
       periods << setting_time
+      setting_time += PERIOD_TIME
     end
     return periods
   end

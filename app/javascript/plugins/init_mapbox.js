@@ -16,7 +16,7 @@ const initMapbox = () => {
 
     navigator.geolocation.getCurrentPosition((res) => {
 
-      const popup = new mapboxgl.Popup({ closeOnClic: false }, { closeOnMove: true }, { className: popup } ).setHTML("<h3><font size='-1'>You are here</font><br>MOTHERFUCKER</h3>");
+      const popup = new mapboxgl.Popup({ closeOnClic: false }, { closeOnMove: true }, { className: popup } ).setHTML("<h3><font size='-1'>You are here</font></h3>");
       new mapboxgl.Marker({ color: '#FF0100' })
         .setLngLat([ res.coords.longitude, res.coords.latitude ])
         .setPopup(popup)

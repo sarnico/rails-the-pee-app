@@ -4,8 +4,9 @@
       <h1 class="calendarBookingInfo"><%= @toilet.name %></h1>
       <h2 class="calendarBookingInfo"><%= @toilet.address %></h2>
       <div class="calendarBookingInfo">
+        <%= @date %>
         <%= simple_form_for [@toilet, @booking] do |f| %>
-          <%= f.input :date, collection:@available_periods_today, prompt: :translate %>
+          <%= f.input :date, collection:@available_periods_today, prompt: :translate, as: :select%>
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
