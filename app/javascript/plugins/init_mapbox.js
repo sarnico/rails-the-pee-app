@@ -25,9 +25,9 @@ const initMapbox = () => {
         .setPopup(popup)
         .addTo(map);
 
-      const bounds = new mapboxgl.LngLatBounds();
-      bounds.extend([ res.coords.longitude, res.coords.latitude ]);
-      map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 10 });
+      // const bounds = new mapboxgl.LngLatBounds();
+      // bounds.extend([ res.coords.longitude, res.coords.latitude ]);
+      // map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 10 });
     })
 
 
@@ -42,6 +42,14 @@ const initMapbox = () => {
         .setPopup(popup)
         .addTo(map);
     });
+
+    const bounds = new mapboxgl.LngLatBounds();
+    if (markers.length > 0) {
+      markers.forEach(marker => {
+        bounds.extend([ marker.lng, marker.lat ]);
+      })
+      map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 10 });
+    }
 
     // Add Navigatioon control on the map
     map.addControl(new mapboxgl.NavigationControl(), 'top-left');
