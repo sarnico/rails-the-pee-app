@@ -1,6 +1,6 @@
 <div class="body">
-  <div class="container">
-    <div>
+  <div class="container toilet-page">
+    <div class="left-infos">
       <h1 class="calendarBookingInfo"><%= @toilet.name %></h1>
       <h2 class="calendarBookingInfo"><%= @toilet.address %></h2>
       <div class="calendarBookingInfo">
@@ -9,8 +9,11 @@
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
-      <div class="calendarBookingInfo">
-        <%= cl_image_tag @toilet.image.key %>
+      <div
+        class="calendarBookingInfo image"
+        style="background-image: url('<%= cloudinary_url @toilet.image.key %>');"
+      >
+       <!--  <%= cl_image_tag @toilet.image.key %> -->
       </div>
     </div>
 
@@ -29,5 +32,6 @@
       >
       </div>
     </div>
-   </div>
+  </div>
 </div>
+
