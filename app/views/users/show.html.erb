@@ -15,8 +15,8 @@
             <h2>Account</h2>
             <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582719027/user-edit-solid_sy5tvb.svg", :width => 30, :crop => "pad"), edit_user_registration_path %>
           </div>
-        <p><strong>Username :</strong> <%="#{@user.username}"%></p>
-        <p><strong>Email :</strong> <%="#{@user.email}"%></p>
+        <p><strong>Username :</strong> <%="#{current_user.username}"%></p>
+        <p><strong>Email :</strong> <%="#{current_user.email}"%></p>
         </div>
       </div>
     </div>
