@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to toilet_path(@toilet)
     else
-      render "toilet"
+      render :toilet
     end
   end
 

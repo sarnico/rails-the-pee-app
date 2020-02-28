@@ -16,6 +16,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
+import { show_prompt } from '../plugins/submit_button_booking'
+
 
 calendar();
 initMapbox();
+show_prompt();
