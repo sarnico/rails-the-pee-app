@@ -13,11 +13,11 @@ class ToiletsController < ApplicationController
       max_booking_time: @toilet.max_booking_time.strftime("%H:%M"),
     }
 
+    @available_periods_today = @toilet.available_booking_periods.map{|t| t.strftime("%H:%M")}
 
-    @available_periods_today = @toilet.available_booking_periods
-    @toilet.bookings.where(date: Date.today.to_datetime).each{|booking|
+    @toilet.bookings.each{|booking|
       @available_periods_today.reject!{|apt|
-        apt == booking.date
+        apt == booking.date.strftime("%H:%M")
       }
     }
 

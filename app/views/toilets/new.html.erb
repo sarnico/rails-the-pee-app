@@ -7,8 +7,8 @@
       <%= simple_form_for [@user, @toilet] do |f| %>
         <%= f.error_notification %>
         <%= f.input :name, label: 'Give a name to your toilet', placeholder: 'The name' %>
-        <%= f.input :min_booking_time, label: 'Minimum time of possible booking (time only) :' %>
-        <%= f.input :max_booking_time, label: 'Maximum time of possible booking (time only) :' %>
+        <%= f.input :min_booking_time, label: 'Toilet avalaible from :', :minute_step => 15%>
+        <%= f.input :max_booking_time, label: 'Toilet avalaible to :', :minute_step => 15 %>
         <%= f.input :address, label: 'Address', placeholder: 'Street, number, postcode and city' %>
         <%= f.input :image, label: 'Add a picture of the toilet', as: :file %>
         <%= f.button :submit, 'Create', class: "btn-primary" %>
