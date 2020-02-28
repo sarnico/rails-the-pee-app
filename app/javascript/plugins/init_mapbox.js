@@ -50,15 +50,17 @@ const initMapbox = () => {
 
     map.on('click', function(e) {
       const coordinates = [e.lngLat.lng, e.lngLat.lat]
-      console.log(coordinates)
-      // console.log(e.lngLat)
-      map.flyTo({ center: coordinates });
+      map.flyTo({
+        center: coordinates,
+        zoom: 14
+      });
     });
 
 
     // Add the search  bar
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
                                       mapboxgl: mapboxgl }));
+
   }
 };
 
