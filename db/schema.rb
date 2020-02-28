@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_103219) do
+ActiveRecord::Schema.define(version: 2020_02_28_090745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_103219) do
     t.string "name"
     t.text "address"
     t.bigint "user_id"
-    t.datetime "min_booking_time"
-    t.datetime "max_booking_time"
+    t.time "min_booking_time"
+    t.time "max_booking_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image"
