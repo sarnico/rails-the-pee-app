@@ -6,7 +6,7 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
-
+import { inputSearch } from '../plugins/input_search'
 
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
@@ -21,4 +21,6 @@ import { show_prompt } from '../plugins/submit_button_booking'
 
 calendar();
 initMapbox();
+inputSearch();
 show_prompt();
+

@@ -1,0 +1,23 @@
+<%= link_to toilet_path(t) do %>
+  <div class='home-card-toilet'>
+
+    <% if t.image.attached? %>
+      <div class='home-card-category'
+        style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%= cl_image_path t.image.key %>)'>
+      </div>
+    <% end %>
+
+    <div class='home-card-toilet-infos'>
+      <h2><%= t.name %></h2>
+      <p>Address : <%= t.address %></p>
+      <p>Hosted by : <%= t.user.username %></p>
+    </div>
+
+    <div class="host">
+      <% if t.user.avatar.attached? %>
+      <%= cl_image_tag t.user.avatar.key, height: 40, width: 40, crop: :fill, class: "host-avatar avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'pages#home'
+  get 'near_toilets', to: "pages#near_toilets"
 
 
   resources :users, only: [:show] do
