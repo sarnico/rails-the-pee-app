@@ -68,7 +68,7 @@
           <%= link_to cl_image_tag("https://res.cloudinary.com/dvnodeli5/image/upload/v1582816115/ic_add_box_48px_lwqilz.svg", :width => 38, :crop => "pad"), root_path %>
         </div>
         <div class="booking-cards-container">
-          <% @user.bookings.each do |b| %>
+          <% @sorted_bookings.each do |b| %>
             <div class="booking-cards">
                 <p class="p"><strong>Toilet</strong>  : <%= "#{b.toilet.name}" %></p>
                 <p class="p"><strong>Date</strong>  : <%= "#{b.date}" %></p>
