@@ -6,7 +6,7 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
-
+import { inputSearch } from '../plugins/input_search'
 
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
@@ -19,3 +19,4 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 calendar();
 initMapbox();
+inputSearch();

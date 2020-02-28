@@ -11,9 +11,9 @@
         <div class='home-card-toilet'>
 
           <% if t.image.attached? %>
-          <div class='home-card-category'
-            style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%= cl_image_path t.image.key %>)'>
-          </div>
+            <div class='home-card-category'
+              style='background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%= cl_image_path t.image.key %>)'>
+            </div>
           <% end %>
 
           <div class='home-card-toilet-infos'>
