@@ -27,15 +27,9 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.toilet = @toilet
     if @booking.save
-      respond_to do |format|
-        format.html { redirect_to toilet_path(@toilet) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
+      redirect_to toilet_path(@toilet)
     else
-      respond_to do |format|
-        format.html { render :toilet }
-        format.js  # <-- idem
-      end
+      render :toilet
     end
   end
 
