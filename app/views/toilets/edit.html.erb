@@ -8,8 +8,8 @@
         <%= f.error_notification %>
         <%= f.input :name, label: 'Change the name of your toilet' %>
         <%= f.input :address, label: 'Change the address' %>
-        <%= f.input :min_booking_time, label: 'Change the minimum time of possible booking (time only) :' %>
-        <%= f.input :max_booking_time, label: 'Change the maximum time of possible booking (time only) :' %>
+        <%= f.input :min_booking_time, label: 'Toilet avalaible from :', :minute_step => 15 %>
+        <%= f.input :max_booking_time, label: 'Toilet avalaible until :', :minute_step => 15 %>
         <%= f.input :image, label: 'Change the picture of your toilet', as: :file %>
         <%= f.button :submit, 'Update', class: "btn-primary" %>
       <% end %>
