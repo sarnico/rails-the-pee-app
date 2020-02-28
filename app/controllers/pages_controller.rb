@@ -4,9 +4,9 @@ class PagesController < ApplicationController
   def home
     @toilets = Toilet.geocoded
 
-    if request.location.city
-      @toilets = Toilet.near(request.location.city, 10)
-    end
+    # if request.location.city
+    #   @toilets = Toilet.near(request.location.city, 10)
+    # end
 
     @markers = @toilets.map do |toilet|
       {
